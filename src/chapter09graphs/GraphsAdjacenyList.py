@@ -1,22 +1,24 @@
 # Copyright (c) Dec 22, 2014 CareerMonk Publications and others.
-# E-Mail           		: info@careermonk.com 
-# Creation Date    		: 2014-01-10 06:15:46 
-# Last modification		: 2008-10-31 
-#               by		: Narasimha Karumanchi 
-# Book Title			: Data Structures And Algorithmic Thinking With Python
-# Warranty         		: This software is provided "as is" without any 
-# 				   warranty; without even the implied warranty of 
-# 				    merchantability or fitness for a particular purpose. 
+# E-Mail                        : info@careermonk.com
+# Creation Date                 : 2014-01-10 06:15:46
+# Last modification             : 2008-10-31
+#               by              : Narasimha Karumanchi
+# Book Title                    : Data Structures And Algorithmic Thinking With Python
+# Warranty                      : This software is provided "as is" without any
+#                                  warranty; without even the implied warranty of
+#                                   merchantability or fitness for a particular purpose.
 
 import sys
+
+
 class Vertex:
     def __init__(self, node):
         self.id = node
         self.adjacent = {}
         # Set distance to infinity for all nodes
         self.distance = sys.maxsize
-        # Mark all nodes unvisited        
-        self.visited = False  
+        # Mark all nodes unvisited
+        self.visited = False
         # Predecessor
         self.previous = None
 
@@ -24,7 +26,7 @@ class Vertex:
         self.adjacent[neighbor] = weight
 
     def getConnections(self):
-        return list(self.adjacent.keys())  
+        return list(self.adjacent.keys())
 
     def getVertexID(self):
         return self.id
@@ -45,7 +47,8 @@ class Vertex:
         self.visited = True
 
     def __str__(self):
-        return str(self.id) + ' adjacent: ' + str([x.id for x in self.adjacent])
+        return str(self.id) + " adjacent: " + str([x.id for x in self.adjacent])
+
 
 class Graph:
     def __init__(self):
@@ -74,7 +77,7 @@ class Graph:
             self.addVertex(to)
 
         self.vertDictionary[frm].addNeighbor(self.vertDictionary[to], cost)
-	# For directed graph do not add this
+        # For directed graph do not add this
         self.vertDictionary[to].addNeighbor(self.vertDictionary[frm], cost)
 
     def getVertices(self):
@@ -85,30 +88,31 @@ class Graph:
 
     def getPrevious(self, current):
         return self.previous
-	
+
     def getEdges(self):
         edges = []
-	for v in G:
-		for w in v.getConnections():
-		    vid = v.getVertexID()
-		    wid = w.getVertexID()
-		    edges.append((vid, wid, v.getWeight(w)))
-	return edges
-    
-if __name__ == '__main__':
+        for v in G:
+            for w in v.getConnections():
+                vid = v.getVertexID()
+                wid = w.getVertexID()
+                edges.append((vid, wid, v.getWeight(w)))
+        return edges
+
+
+if __name__ == "__main__":
 
     G = Graph()
-    G.addVertex('a')
-    G.addVertex('b')
-    G.addVertex('c')
-    G.addVertex('d')
-    G.addVertex('e')
-    G.addEdge('a', 'b', 4)  
-    G.addEdge('a', 'c', 1)
-    G.addEdge('c', 'b', 2)
-    G.addEdge('b', 'e', 4)
-    G.addEdge('c', 'd', 4)
-    G.addEdge('d', 'e', 4)
+    G.addVertex("a")
+    G.addVertex("b")
+    G.addVertex("c")
+    G.addVertex("d")
+    G.addVertex("e")
+    G.addEdge("a", "b", 4)
+    G.addEdge("a", "c", 1)
+    G.addEdge("c", "b", 2)
+    G.addEdge("b", "e", 4)
+    G.addEdge("c", "d", 4)
+    G.addEdge("d", "e", 4)
 
-    print('Graph data:')
+    print("Graph data:")
     print((G.getEdges()))

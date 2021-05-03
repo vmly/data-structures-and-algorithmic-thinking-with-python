@@ -1,12 +1,12 @@
 # Copyright (c) Feb 26, 2021 CareerMonk Publications and others.
-# E-Mail           		: info@careermonk.com
-# Creation Date    		: 2021-02-26 06:15:46
-# Last modification		: 2021-02-26
-#               by		: Narasimha Karumanchi
-# Book Title			: Data Structures And Algorithmic Thinking With Python
-# Warranty         		: This software is provided "as is" without any
-# 				   warranty; without even the implied warranty of
-# 				    merchantability or fitness for a particular purpose.
+# E-Mail                        : info@careermonk.com
+# Creation Date                 : 2021-02-26 06:15:46
+# Last modification             : 2021-02-26
+#               by              : Narasimha Karumanchi
+# Book Title                    : Data Structures And Algorithmic Thinking With Python
+# Warranty                      : This software is provided "as is" without any
+#                                  warranty; without even the implied warranty of
+#                                   merchantability or fitness for a particular purpose.
 
 from queue import PriorityQueue
 

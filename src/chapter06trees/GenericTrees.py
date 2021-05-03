@@ -1,12 +1,12 @@
 # Copyright (c) Dec 22, 2014 CareerMonk Publications and others.
-# E-Mail           		: info@careermonk.com
-# Creation Date    		: 2014-01-10 06:15:46
-# Last modification		: 2008-10-31
-#               by		: Narasimha Karumanchi
-# Book Title			: Data Structures And Algorithmic Thinking With Python
-# Warranty         		: This software is provided "as is" without any
-# 				   warranty; without even the implied warranty of
-# 				    merchantability or fitness for a particular purpose.
+# E-Mail                        : info@careermonk.com
+# Creation Date                 : 2014-01-10 06:15:46
+# Last modification             : 2008-10-31
+#               by              : Narasimha Karumanchi
+# Book Title                    : Data Structures And Algorithmic Thinking With Python
+# Warranty                      : This software is provided "as is" without any
+#                                  warranty; without even the implied warranty of
+#                                   merchantability or fitness for a particular purpose.
 
 # Implement simple generic tree which allows us to add children and also prints the path from root to leaves (nodes without children) for every node.
 
@@ -19,14 +19,14 @@ class GenericTree:
     The birth order of children is recorded: 0 for the first
     child added, 1 for the second, and so on.
         GenericTree(parent, value=None)    Constructor
-        parent         			If this is the root node, None, otherwise the parent's GenericTree object.
-        childList      			List of children, zero or more GenericTree objects.
-        value          			Value passed to constructor; can be any type.
-        birthOrder     			If this is the root node, 0, otherwise the index of this child in the parent's .childList
-        nChildren()    			Returns the number of self's children.
-        nthChild(n)    			Returns the nth child; raises IndexError if n is not a valid child number.
-        fullPath():    			Returns path to self as a list of child numbers.
-        nodeId():     			Returns path to self as a NodeId.
+        parent                          If this is the root node, None, otherwise the parent's GenericTree object.
+        childList                       List of children, zero or more GenericTree objects.
+        value                           Value passed to constructor; can be any type.
+        birthOrder                      If this is the root node, 0, otherwise the index of this child in the parent's .childList
+        nChildren()                     Returns the number of self's children.
+        nthChild(n)                     Returns the nth child; raises IndexError if n is not a valid child number.
+        fullPath():                     Returns path to self as a list of child numbers.
+        nodeId():                       Returns path to self as a NodeId.
     """
 
     def __init__(self, parent, value=None):

@@ -1,22 +1,24 @@
 # Copyright (c) Dec 22, 2014 CareerMonk Publications and others.
-# E-Mail           		: info@careermonk.com 
-# Creation Date    		: 2014-01-10 06:15:46 
-# Last modification		: 2008-10-31 
-#               by		: Narasimha Karumanchi 
-# Book Title			: Data Structures And Algorithmic Thinking With Python
-# Warranty         		: This software is provided "as is" without any 
-# 				   warranty; without even the implied warranty of 
-# 				    merchantability or fitness for a particular purpose. 
+# E-Mail                        : info@careermonk.com
+# Creation Date                 : 2014-01-10 06:15:46
+# Last modification             : 2008-10-31
+#               by              : Narasimha Karumanchi
+# Book Title                    : Data Structures And Algorithmic Thinking With Python
+# Warranty                      : This software is provided "as is" without any
+#                                  warranty; without even the implied warranty of
+#                                   merchantability or fitness for a particular purpose.
 
 import sys
+
+
 class Vertex:
     def __init__(self, node):
         self.id = node
         self.adjacent = {}
         # Set distance to infinity for all nodes
         self.distance = sys.maxsize - 10
-        # Mark all nodes unvisited        
-        self.visited = False  
+        # Mark all nodes unvisited
+        self.visited = False
         # Predecessor
         self.previous = None
 
@@ -24,7 +26,7 @@ class Vertex:
         self.adjacent[neighbor] = weight
 
     def getConnections(self):
-        return list(self.adjacent.keys())  
+        return list(self.adjacent.keys())
 
     def getVertexID(self):
         return self.id
@@ -45,7 +47,8 @@ class Vertex:
         self.visited = True
 
     def __str__(self):
-        return str(self.id) + ' adjacent: ' + str([x.id for x in self.adjacent])
+        return str(self.id) + " adjacent: " + str([x.id for x in self.adjacent])
+
 
 class Graph:
     def __init__(self):
@@ -85,18 +88,21 @@ class Graph:
     def getPrevious(self, current):
         return self.previous
 
+
 def shortest(v, path):
-    ''' make shortest path from v.previous'''
+    """make shortest path from v.previous"""
     if v.previous:
         path.append(v.previous.getVertexID())
         shortest(v.previous, path)
     return
 
+
 import heapq
 
+
 def dijkstraModifiedForPrims(G, source):
-    print('''Dijkstra Modified for Prim''')
-    # Set the distance for the source node to zero 
+    print("""Dijkstra Modified for Prim""")
+    # Set the distance for the source node to zero
     source.setDistance(0)
 
     # Put tuple pair into the priority queue
@@ -104,7 +110,7 @@ def dijkstraModifiedForPrims(G, source):
     heapq.heapify(unvisitedQueue)
 
     while len(unvisitedQueue):
-        # Pops a vertex with the smallest distance 
+        # Pops a vertex with the smallest distance
         uv = heapq.heappop(unvisitedQueue)
         current = uv[1]
         current.setVisited()
@@ -114,15 +120,31 @@ def dijkstraModifiedForPrims(G, source):
             if next.visited:
                 continue
             newCost = current.getWeight(next)
-            
+
             if newCost < next.getDistance():
                 next.setDistance(current.getWeight(next))
                 next.setPrevious(current)
-                print(('Updated : current = %s next = %s newCost = %s' \
-                        % (current.getVertexID(), next.getVertexID(), next.getDistance())))
+                print(
+                    (
+                        "Updated : current = %s next = %s newCost = %s"
+                        % (
+                            current.getVertexID(),
+                            next.getVertexID(),
+                            next.getDistance(),
+                        )
+                    )
+                )
             else:
-                print(('Not updated : current = %s next = %s newCost = %s' \
-                        % (current.getVertexID(), next.getVertexID(), next.getDistance())))
+                print(
+                    (
+                        "Not updated : current = %s next = %s newCost = %s"
+                        % (
+                            current.getVertexID(),
+                            next.getVertexID(),
+                            next.getDistance(),
+                        )
+                    )
+                )
 
         # Rebuild heap
         # 1. Pop every item
@@ -130,16 +152,17 @@ def dijkstraModifiedForPrims(G, source):
             heapq.heappop(unvisitedQueue)
         # 2. Put all vertices not visited into the queue
         unvisitedQueue = [(v.getDistance(), v) for v in G if not v.visited]
-	heapq.heapify(unvisitedQueue)
-    
-if __name__ == '__main__':
+        heapq.heapify(unvisitedQueue)
+
+
+if __name__ == "__main__":
 
     G = Graph()
-    G.addVertex('A')
-    G.addVertex('B')
-    G.addVertex('C')
-    G.addVertex('D')
-    G.addVertex('E')
+    G.addVertex("A")
+    G.addVertex("B")
+    G.addVertex("C")
+    G.addVertex("D")
+    G.addVertex("E")
     G.addEdge("A", "B", 7)
     G.addEdge("A", "D", 5)
     G.addEdge("B", "C", 8)
@@ -151,19 +174,27 @@ if __name__ == '__main__':
     G.addEdge("E", "F", 8)
     G.addEdge("E", "G", 9)
     G.addEdge("F", "G", 11)
-    
-    print('Graph data:')
+
+    print("Graph data:")
     for v in G:
         for w in v.getConnections():
             vid = v.getVertexID()
             wid = w.getVertexID()
-            print(('( %s , %s, %3d)' % (vid, wid, v.getWeight(w))))
-	    
-    source = G.getVertex('A')
-    dijkstraModifiedForPrims(G, source) 
-    
+            print(("( %s , %s, %3d)" % (vid, wid, v.getWeight(w))))
+
+    source = G.getVertex("A")
+    dijkstraModifiedForPrims(G, source)
+
     for v in list(G.vertDictionary.values()):
-	if v.previous:
-		print((v.getVertexID(), " to ", v.previous.getVertexID(), "-->", v.getDistance()))
-	else:
-		print((v.getVertexID(), " to None -->", v.getDistance()))
+        if v.previous:
+            print(
+                (
+                    v.getVertexID(),
+                    " to ",
+                    v.previous.getVertexID(),
+                    "-->",
+                    v.getDistance(),
+                )
+            )
+        else:
+            print((v.getVertexID(), " to None -->", v.getDistance()))
