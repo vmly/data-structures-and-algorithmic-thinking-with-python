@@ -23,7 +23,7 @@ class Node:
         self.next = next
          
     def get_next(self):
-        return self.next
+        return self.__next__
      
      
 class LinkedList:
@@ -46,7 +46,7 @@ class LinkedList:
 		i = i + 1
 		currentNode = currentNode.get_next()
 		
-	print (fractionalNode.get_data())
+	print((fractionalNode.get_data()))
 			
     def insertAtEnd(self, item):
         current = self.head

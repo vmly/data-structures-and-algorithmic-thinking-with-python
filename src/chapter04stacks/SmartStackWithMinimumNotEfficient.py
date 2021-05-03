@@ -29,22 +29,22 @@ class SmartStack:
         return self.min[-1]
 
 def main():
-    print "Push elements to the stack"
-    list = range(10)
+    print("Push elements to the stack")
+    list = list(range(10))
     stack = SmartStack()
     for i in list:
         stack.stack_push(i)
-    print "Print stack and stack minimum"
-    print stack.stack
-    print stack.stack_min()
-    print "Push -1 to stack, print stack and stack minimum"
+    print("Print stack and stack minimum")
+    print((stack.stack))
+    print((stack.stack_min()))
+    print("Push -1 to stack, print stack and stack minimum")
     stack.stack_push(-1)
-    print stack.stack
-    print stack.stack_min()
-    print "Pop from stack, print stack and stack minimum"
-    print stack.stack_pop()
-    print stack.stack
-    print stack.stack_min()
+    print((stack.stack))
+    print((stack.stack_min()))
+    print("Pop from stack, print stack and stack minimum")
+    print((stack.stack_pop()))
+    print((stack.stack))
+    print((stack.stack_min()))
 
 if __name__ == "__main__":
     main()

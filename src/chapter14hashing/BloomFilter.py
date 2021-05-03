@@ -43,5 +43,5 @@ def hashFunction(x):
 
 b = BloomFilter(100, 10, hashFunction)
 b.insert('this is a test key', 'this is a new value')
-print b.get('this is a key')    
-print b.get('this is a test key')    
+print((b.get('this is a key')))    
+print((b.get('this is a test key')))    

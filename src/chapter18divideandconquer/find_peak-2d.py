@@ -1,6 +1,7 @@
 import random
 import pprint
 
+
 def peak_find_2d(matrix):
     j = len(matrix[0]) // 2
 
@@ -22,7 +23,7 @@ def peak_find_2d(matrix):
     if left > maxvalue:
         half = []
         for row in matrix:
-            half.append(row[:j + 1])
+            half.append(row[: j + 1])
         return peak_find_2d(half)
     if right > maxvalue:
         half = []
@@ -30,10 +31,12 @@ def peak_find_2d(matrix):
             half.append(row[j:])
         return peak_find_2d(half)
 
+
 def generate_2d_array(n=7, m=7, lower=0, upper=9):
     return [[random.randint(lower, upper) for _ in range(m)] for _ in range(n)]
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     matrix = generate_2d_array(upper=9)
     pprint.pprint(matrix)
     x = peak_find_2d(matrix)

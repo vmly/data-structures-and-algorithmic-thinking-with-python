@@ -89,7 +89,7 @@ class Heap:
 		self.percolateUp(self.size)
 
 	def printHeap(self):
-		print self.heapList[1:]
+		print((self.heapList[1:]))
 		
 	    
 def FindKthLargestEle(HOrig, k):
@@ -121,5 +121,5 @@ HOrig.insert(12)
 HOrig.insert(18)
 HOrig.insert(16)
 
-print FindKthLargestEle(HOrig, 6)
-print FindKthLargestEle(HOrig, 3)
+print((FindKthLargestEle(HOrig, 6)))
+print((FindKthLargestEle(HOrig, 3)))

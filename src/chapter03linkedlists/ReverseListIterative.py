@@ -23,7 +23,7 @@ class Node:
         self.next = next
          
     def get_next(self):
-        return self.next
+        return self.__next__
      
      
 class LinkedList:
@@ -63,7 +63,7 @@ class LinkedList:
         current = self.head
          
         while current != None:
-            print current.get_data()
+            print((current.get_data()))
             current = current.get_next()
              
 	

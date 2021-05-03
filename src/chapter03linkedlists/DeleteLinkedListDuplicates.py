@@ -10,7 +10,7 @@
 
 def deleteLinkedListDuplicates(self):
 	current = self.head;
-	while current != None and current.next != None:
+	while current != None and current.__next__ != None:
 	    if current.get_data() == current.get_next().get_data():
 		current.set_next(current.get_next().get_next())
 	    else:

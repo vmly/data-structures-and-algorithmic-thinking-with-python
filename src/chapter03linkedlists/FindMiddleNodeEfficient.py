@@ -23,7 +23,7 @@ class Node:
         self.next = next
          
     def get_next(self):
-        return self.next
+        return self.__next__
      
      
 class LinkedList:
@@ -74,7 +74,7 @@ class LinkedList:
         current = self.head
          
         while current != None:
-            print current.get_data()
+            print((current.get_data()))
             current = current.get_next()
              
 	
@@ -89,4 +89,4 @@ if __name__ == "__main__":
     linkedlst.printList()
     linkedlst.recursiveReverseList()
     linkedlst.printList()
-    print(linkedlst.findMiddleNode().get_data())
+    print((linkedlst.findMiddleNode().get_data()))

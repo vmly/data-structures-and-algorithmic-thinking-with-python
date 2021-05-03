@@ -13,7 +13,7 @@ def BellmanFord(G, source):
     destination = {} 
     predecessor = {} 
     for node in G:
-        destination[node] = sys.maxint  # We start admiting that the rest of nodes are very very far
+        destination[node] = sys.maxsize  # We start admiting that the rest of nodes are very very far
         predecessor[node] = None
     destination[source] = 0  # For the source we know how to reach
     for i in range(len(G) - 1): 
@@ -40,4 +40,4 @@ if __name__ == '__main__':
 		'D': {'B':  1, 'C':  5},
 		'E': {'D':-3}
 	}
-	print BellmanFord(G, 'A')
+	print((BellmanFord(G, 'A')))

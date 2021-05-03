@@ -21,7 +21,7 @@ def moveSpacesToBegin(A):
      A = ''.join(datalist)
      return A
 A = "move these spaces to beginning"
-print A, "\n", moveSpacesToBegin(A)
+print((A, "\n", moveSpacesToBegin(A)))
 
 def moveSpacesToBegin2(A):
 	n = len(A) - 1
@@ -38,5 +38,5 @@ def moveSpacesToBegin2(A):
 	A = ''.join(datalist)
 	return A
 A = "move these spaces to beginning"
-print A, "\n", moveSpacesToBegin2(A)
+print((A, "\n", moveSpacesToBegin2(A)))
 

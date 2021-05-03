@@ -51,14 +51,14 @@ def postorderRecursive(root):
 
 	postorderRecursive(root.left)
 	postorderRecursive(root.right)
-	print root.data
+	print((root.data))
     
 # Pre-order recursive traversal. The nodes' values are appended to the result list in traversal order
 def preorderRecursive(root):
     if not root:
         return
     
-    print root.data
+    print((root.data))
     preorderRecursive(root.left)
     preorderRecursive(root.right)
 

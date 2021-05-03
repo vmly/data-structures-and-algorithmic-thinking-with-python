@@ -26,7 +26,7 @@ class Node:
 		self.next = next
 	# method for getting the next field of the node    
 	def get_next(self):
-		return self.next
+		return self.__next__
 	# method for setting the last field of the node
 	def setLast(self, last):
 		self.last = last
@@ -35,7 +35,7 @@ class Node:
 		return self.last	
 	# returns true if the node points to another node
 	def has_next(self):
-		return self.next != None
+		return self.__next__ != None
 
 class Queue(object):
 	def __init__(self, data=None):
@@ -54,19 +54,19 @@ class Queue(object):
 
 	def queueRear(self):
 		if self.rear is None:
-			print "Sorry, the queue is empty!"
+			print("Sorry, the queue is empty!")
 			raise IndexError
 		return self.rear.get_data()
 
 	def queueFront(self):
 		if self.front is None:
-			print "Sorry, the queue is empty!"
+			print("Sorry, the queue is empty!")
 			raise IndexError
 		return self.front.get_data()
 
 	def deQueue(self):
 		if self.rear is None:
-			print "Sorry, the queue is empty!"
+			print("Sorry, the queue is empty!")
 			raise IndexError
 		result = self.rear.get_data()
 		self.rear = self.rear.last
@@ -149,13 +149,13 @@ def inOrderTraversal(root):
     if not root:
         return
     inOrderTraversal(root.left)
-    print root.data
+    print((root.data))
     inOrderTraversal(root.right)
 
 def preOrderTraversal(root):
     if not root:
         return        
-    print root.data
+    print((root.data))
     preOrderTraversal(root.left)
     preOrderTraversal(root.right)    
 

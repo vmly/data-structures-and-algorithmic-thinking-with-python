@@ -9,10 +9,10 @@ class SkyLinesDivideandConquer:
             result.append([buildings[0][0], buildings[0][2]])
             result.append([buildings[0][1], 0])
             return result
-            
+
         mid = (len(buildings) - 1) / 2
         leftSkyline = self.getSkyline(0, mid, buildings)
-        rightSkyline = self.getSkyline(mid + 1, len(buildings)-1, buildings)
+        rightSkyline = self.getSkyline(mid + 1, len(buildings) - 1, buildings)
         result = self.mergeSkylines(leftSkyline, rightSkyline)
         return result
 
@@ -24,10 +24,10 @@ class SkyLinesDivideandConquer:
             return result
         mid = (start + end) / 2
         leftSkyline = self.getSkyline(start, mid, buildings)
-        rightSkyline = self.getSkyline(mid+1, end, buildings)
+        rightSkyline = self.getSkyline(mid + 1, end, buildings)
         result = self.mergeSkylines(leftSkyline, rightSkyline)
         return result
-        
+
     def mergeSkylines(self, leftSkyline, rightSkyline):
         result = []
         i, j, h1, h2, maxH = 0, 0, 0, 0, 0

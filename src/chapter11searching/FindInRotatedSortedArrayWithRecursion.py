@@ -39,4 +39,4 @@ def findWithRecursion(A, target, low, high):
 	    return findWithRecursion(A, target, mid + 1, high)
 	    
 A = [15, 16, 19, 20, 25, 1, 3, 4, 5, 7, 10, 14]		
-print findInRotatedSortedArrayWithRecursion(A, 5)	    
+print((findInRotatedSortedArrayWithRecursion(A, 5)))	    

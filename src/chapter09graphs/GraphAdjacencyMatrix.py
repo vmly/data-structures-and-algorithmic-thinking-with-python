@@ -68,7 +68,7 @@ class Graph:
 		row = []
 		for v in range(0, self.numVertices):
 			row.append(self.adjMatrix[u][v])
-		print row	
+		print(row)	
 	
     def getEdges(self):
         edges = []
@@ -87,12 +87,12 @@ if __name__ == '__main__':
     G.setVertex(2, 'c')
     G.setVertex(3, 'd')
     G.setVertex(4, 'e')
-    print 'Graph data:'  
+    print('Graph data:')  
     G.addEdge('a', 'e', 10)  
     G.addEdge('a', 'c', 20)
     G.addEdge('c', 'b', 30)
     G.addEdge('b', 'e', 40)
     G.addEdge('e', 'd', 50)
     G.addEdge('f', 'e', 60)
-    print G.printMatrix()      
-    print G.getEdges()    
+    print((G.printMatrix()))      
+    print((G.getEdges()))    

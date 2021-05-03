@@ -29,4 +29,4 @@ def findInRotatedSortedArray(A, target):
 	
 A = [15, 16, 19, 20, 25, 1, 3, 4, 5, 7, 10, 14]		
 
-print findInRotatedSortedArray(A, 5)
+print((findInRotatedSortedArray(A, 5)))

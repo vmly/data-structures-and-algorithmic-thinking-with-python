@@ -14,7 +14,7 @@ def threeElementsWithSumKBruteForce(A, K):
 		for j in range(i + 1, n - 1):
 			for k in range(j + 1, n):
 				if(A[i] + A[j] + A[k] == K):
-					print "yes-->", A[i], " + ", A[j], " + ", A[k], " = ", K		
+					print(("yes-->", A[i], " + ", A[j], " + ", A[k], " = ", K))		
 					return 1
 	return 0    
 A = [1, 6, 45, 4, 10, 18]

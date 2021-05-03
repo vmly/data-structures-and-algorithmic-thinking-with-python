@@ -1,12 +1,12 @@
 # Copyright (c) Dec 22, 2014 CareerMonk Publications and others.
-# E-Mail           		: info@careermonk.com 
-# Creation Date    		: 2014-01-10 06:15:46 
-# Last modification		: 2008-10-31 
-#               by		: Narasimha Karumanchi 
+# E-Mail           		: info@careermonk.com
+# Creation Date    		: 2014-01-10 06:15:46
+# Last modification		: 2008-10-31
+#               by		: Narasimha Karumanchi
 # Book Title			: Data Structures And Algorithms Made In Java
-# Warranty         		: This software is provided "as is" without any 
-# 				   warranty; without even the implied warranty of 
-# 				    merchantability or fitness for a particular purpose. 
+# Warranty         		: This software is provided "as is" without any
+# 				   warranty; without even the implied warranty of
+# 				    merchantability or fitness for a particular purpose.
 
 # Node of a Singly Linked List
 class Node:
@@ -14,12 +14,14 @@ class Node:
         self.data = data
         self.next = None
 
-# class for defining a linked list   
+
+# class for defining a linked list
 class PartitionList(object):
     # initializing a list
     def __init__(self):
         self.length = 0
         self.head = None
+
     def partition(self, head, X):
         # lesser and greater are the two pointers used to create two list
         # lesser_head and greater_head are used to save the heads of the two lists.
@@ -31,20 +33,20 @@ class PartitionList(object):
             # If the original list node is lesser than the given X, assign it to the lesser list.
             if head.data < X:
                 lesser.next = head
-                lesser = lesser.next
+                lesser = lesser.__next__
             else:
                 # If the original list node is greater or equal to the given X, assign it to the greater list.
                 greater.next = head
-                greater = greater.next
+                greater = greater.__next__
 
             # move ahead in the original list
-            head = head.next
+            head = head.__next__
 
         # Last node of "greater" list would also be ending node of the reformed list
         greater.next = None
 
         # Once all the nodes are correctly assigned to the two lists,
         # combine them to form a single list which would be returned.
-        lesser.next = greater_head.next
+        lesser.next = greater_head.__next__
 
-        return lesser_head.next
+        return lesser_head.__next__

@@ -26,13 +26,13 @@ class Stack:
         return self.array[self.size()-1]
     def pop(self):
         if self.isEmpty():
-            print "Underflow"
+            print("Underflow")
             return None
         data = self.array.pop()
         return data
     def push(self, data):
         if self.isFull():
-            print "Overflow"
+            print("Overflow")
             return
         self.array.append(data)
 
@@ -56,8 +56,8 @@ q.enqueue(6)
 q.enqueue(8)
 q.enqueue(10)
 q.enqueue(16)
-print q.dequeue()
-print q.dequeue()
-print q.dequeue()
-print q.dequeue()
-print q.dequeue()
+print((q.dequeue()))
+print((q.dequeue()))
+print((q.dequeue()))
+print((q.dequeue()))
+print((q.dequeue()))

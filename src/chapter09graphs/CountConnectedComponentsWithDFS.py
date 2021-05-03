@@ -14,7 +14,7 @@ class Vertex:
         self.id = node
         self.adjacent = {}
         # Set distance to infinity for all nodes
-        self.distance = sys.maxint
+        self.distance = sys.maxsize
         # Mark all nodes unvisited        
         self.visited = False  
         # Predecessor
@@ -24,7 +24,7 @@ class Vertex:
         self.adjacent[neighbor] = weight
 
     def getConnections(self):
-        return self.adjacent.keys()  
+        return list(self.adjacent.keys())  
 
     def getVertexID(self):
         return self.id
@@ -53,7 +53,7 @@ class Graph:
         self.numVertices = 0
 
     def __iter__(self):
-        return iter(self.vertDictionary.values())
+        return iter(list(self.vertDictionary.values()))
 
     def addVertex(self, node):
         self.numVertices = self.numVertices + 1
@@ -78,7 +78,7 @@ class Graph:
         self.vertDictionary[to].addNeighbor(self.vertDictionary[frm], cost)
 
     def getVertices(self):
-        return self.vertDictionary.keys()
+        return list(self.vertDictionary.keys())
 
     def setPrevious(self, current):
         self.previous = current
@@ -97,7 +97,7 @@ class Graph:
 
 def dfs(G, currentVert, visited):
 	visited[currentVert] = True  # mark the visited node 
-	print "traversal: " + currentVert.getVertexID()
+	print(("traversal: " + currentVert.getVertexID()))
 	for nbr in currentVert.getConnections():  # take a neighbouring node 
 		if nbr not in visited:  # condition to check whether the neighbour node is already visited
 			dfs(G, nbr, visited)  # recursively traverse the neighbouring node 
@@ -130,7 +130,7 @@ if __name__ == '__main__':
     G.addEdge('c', 'e', 1)
     G.addEdge('d', 'e', 1)
     G.addEdge('e', 'a', 1)
-    print 'Graph data:'
-    print G.getEdges()
+    print('Graph data:')
+    print((G.getEdges()))
  
-    print countConnectedComponentsWithDFS(G)
+    print((countConnectedComponentsWithDFS(G)))

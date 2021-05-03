@@ -14,7 +14,7 @@ class Vertex:
         self.id = node
         self.adjacent = {}
         # Set distance to infinity for all nodes
-        self.distance = sys.maxint
+        self.distance = sys.maxsize
         # Mark all nodes unvisited        
         self.visited = False  
         # Predecessor
@@ -28,7 +28,7 @@ class Vertex:
         self.adjacent[neighbor] = weight
 
     def getConnections(self):
-        return self.adjacent.keys()  
+        return list(self.adjacent.keys())  
 	
     def setInDegree(self, inDegree):
         self.inDegree = inDegree
@@ -62,7 +62,7 @@ class Graph:
         self.numVertices = 0
 
     def __iter__(self):
-        return iter(self.vertDictionary.values())
+        return iter(list(self.vertDictionary.values()))
 
     def addVertex(self, node):
         self.numVertices = self.numVertices + 1
@@ -141,7 +141,7 @@ def topologicalSort(G):
 	# Printing the topological order    
 	while len(topologicalList):
 		 node = topologicalList.pop(0)
-		 print node.getVertexID()
+		 print((node.getVertexID()))
 		 
 if __name__ == '__main__':
     G = Graph()
@@ -165,6 +165,6 @@ if __name__ == '__main__':
     G.addEdge('F', 'H')       
     G.addEdge('E', 'H')    
     G.addEdge('H', 'I')      
-    print 'Graph data:'
-    print G.getEdges()	    
+    print('Graph data:')
+    print((G.getEdges()))	    
     topologicalSort(G)

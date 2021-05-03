@@ -61,7 +61,7 @@ class DisjointSet:
 		self.S[root2] = root1
 			
 	def printSet(self):
-		print self.S
+		print((self.S))
 #---------------------------------------------------------------
  
 if __name__ == '__main__':
@@ -75,7 +75,7 @@ if __name__ == '__main__':
     uf.UNIONBYSIZE(1, 3)
     uf.printSet()
  
-    print uf.FINDBYSIZE(2)
+    print((uf.FINDBYSIZE(2)))
     uf.printSet()
     
     uf = DisjointSet(9)
@@ -88,5 +88,5 @@ if __name__ == '__main__':
     uf.UNIONBYHEIGHT(1, 5)
     uf.printSet()
  
-    print uf.FINDBYSIZE(2)
+    print((uf.FINDBYSIZE(2)))
     uf.printSet()    

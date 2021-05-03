@@ -13,7 +13,7 @@ def twoElementsWithSumK1(A, K):
 	for i in range(n):
 		for j in range(i + 1, n):
 			if(A[i] + A[j] == K):
-				print ("%d=%d+%d" %(K, A[i], A[j]))
+				print(("%d=%d+%d" %(K, A[i], A[j])))
  
 def twoElementsWithSumK2(A, K):
 	A.sort()
@@ -21,7 +21,7 @@ def twoElementsWithSumK2(A, K):
 	j = len(A)-1
 	while(i<=j):
 		if(A[i] + A[j] == K):
-			print ("%d=%d+%d" %(K, A[i], A[j]))
+			print(("%d=%d+%d" %(K, A[i], A[j])))
 			i += 1
 		elif(A[i] + A[j] > K):
 			j -= 1
@@ -36,7 +36,7 @@ def twoElementsWithSumK3(A, K):
 			if ((K - element) == element and h[element] == 1):
 				continue
 			else:
-				print ("%d=%d+%d" %(K, element, K - element))
+				print(("%d=%d+%d" %(K, element, K - element)))
  
 A = [1,2,3,1,4,5,2,6,2,5,6]
-print twoElementsWithSumK3(A, 10)
+print((twoElementsWithSumK3(A, 10)))

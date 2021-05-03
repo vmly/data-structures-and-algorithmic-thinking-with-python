@@ -24,4 +24,4 @@ def elem(A, n, e):
 
 A = [54, 26, 93, 54, 77, 31, 44, 55, 20]
 RemoveDuplicates(A)
-print A
+print(A)

@@ -23,7 +23,7 @@ class Node:
         self.next = next
          
     def get_next(self):
-        return self.next
+        return self.__next__
      
      
 class LinkedList:
@@ -49,7 +49,7 @@ class LinkedList:
     	head = list
     	tail = list.get_next()
     	self.printListFromEnd(tail)
-    	print head.get_data(), 	
+    	print(head.get_data(), end=' ') 	
 
     def insertAtEnd(self, item):
         current = self.head
@@ -69,7 +69,7 @@ class LinkedList:
         current = self.head
          
         while current != None:
-            print current.get_data()
+            print(current.get_data())
             current = current.get_next()
     
     def isLinkedListLengthEven(self):

@@ -8,8 +8,8 @@
 # 				   warranty; without even the implied warranty of
 # 				    merchantability or fitness for a particular purpose.
 
-'''Complexity
-Space : O(n) Time: O(1)'''
+"""Complexity
+Space : O(n) Time: O(1)"""
 
 
 class Node:
@@ -27,7 +27,7 @@ class Node:
         self.next = next
 
     def get_next(self):
-        return self.next
+        return self.__next__
 
 
 class LinkedList:
@@ -110,7 +110,7 @@ class LinkedList:
         current = self.head
 
         while current != None:
-            print current.get_data()
+            print((current.get_data()))
             current = current.get_next()
 
     def remove(self, item):
@@ -120,10 +120,10 @@ class LinkedList:
 
         while current.get_next() != None and not found:
             if current.get_data() == item:
-                print current.get_data()
-                print previous.get_data()
+                print((current.get_data()))
+                print((previous.get_data()))
                 found = True
-                previous.set_next(current.next)
+                previous.set_next(current.__next__)
             else:
                 previous = current
                 current = current.get_next()
@@ -152,33 +152,33 @@ class LinkedList:
         hare = self.head
         tortoise = self.head
 
-        while (hare and tortoise):
+        while hare and tortoise:
             hare = hare.get_next()
-            if (hare == tortoise):
+            if hare == tortoise:
                 return True
 
             if hare == None:
                 return False
 
             hare = hare.get_next()
-            if (hare == tortoise):
+            if hare == tortoise:
                 return True
 
             tortoise = tortoise.get_next()
 
     def detectCycleStart(self):
-        if None == self.head or None == self.head.next:
+        if None == self.head or None == self.head.__next__:
             return None
 
         # slow and fast both started at head after one step,
         # slow is at self.head.next and fast is at self.head.next.next
-        slow = self.head.next
-        fast = slow.next
+        slow = self.head.__next__
+        fast = slow.__next__
         # each keep walking until they meet again.
         while slow != fast:
-            slow = slow.next
+            slow = slow.__next__
             try:
-                fast = fast.next.next
+                fast = fast.next.__next__
             except AttributeError:
                 return None  # no cycle if NoneType reached
 
@@ -186,34 +186,34 @@ class LinkedList:
         # beginning of loop
         slow = self.head
         while slow != fast:
-            slow = slow.next
-            fast = fast.next
+            slow = slow.__next__
+            fast = fast.__next__
 
         return slow  # beginning of loop
 
     def fndLoopLength(self):
-            if None == self.head or None == self.head.next:
-                return 0
+        if None == self.head or None == self.head.__next__:
+            return 0
 
-            # slow and fast both started at head after one step,
-            # slow is at self.head.next and fast is at self.head.next.next
-            slow = self.head.next
-            fast = slow.next
-            # each keep walking until they meet again.
-            while slow != fast:
-                slow = slow.next
-                try:
-                    fast = fast.next.next
-                except AttributeError:
-                    return 0  # no cycle if NoneType reached
+        # slow and fast both started at head after one step,
+        # slow is at self.head.next and fast is at self.head.next.next
+        slow = self.head.__next__
+        fast = slow.__next__
+        # each keep walking until they meet again.
+        while slow != fast:
+            slow = slow.__next__
+            try:
+                fast = fast.next.__next__
+            except AttributeError:
+                return 0  # no cycle if NoneType reached
 
-            loopLength = 0
-            slow = slow.next
-            while slow != fast:
-                slow = slow.next
-                loopLength = loopLength + 1
+        loopLength = 0
+        slow = slow.__next__
+        while slow != fast:
+            slow = slow.__next__
+            loopLength = loopLength + 1
 
-            return loopLength
+        return loopLength
 
 
 if __name__ == "__main__":
@@ -230,6 +230,6 @@ if __name__ == "__main__":
     linkedlst.printList()
 
     linkedlst.induceCycle(2, 8)
-    print linkedlst.detectCycle()
-    print linkedlst.fndLoopLength()
-    print linkedlst.detectCycleStart()
+    print((linkedlst.detectCycle()))
+    print((linkedlst.fndLoopLength()))
+    print((linkedlst.detectCycleStart()))

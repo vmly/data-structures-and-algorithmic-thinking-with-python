@@ -15,4 +15,4 @@ def singleNumber(A):
 	return res
 
 A = [7, 3, 6, 3, 3, 6, 7	]
-print singleNumber(A)
+print((singleNumber(A)))

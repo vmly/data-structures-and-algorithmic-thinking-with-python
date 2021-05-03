@@ -15,7 +15,7 @@ class Vertex:
         self.id = node
         self.adjacent = {}
         # Set distance to infinity for all nodes
-        self.distance = sys.maxint
+        self.distance = sys.maxsize
         # Mark all nodes unvisited        
         self.visited = False  
         # Predecessor
@@ -25,7 +25,7 @@ class Vertex:
         self.adjacent[neighbor] = weight
 
     def getConnections(self):
-        return self.adjacent.keys()  
+        return list(self.adjacent.keys())  
 
     def getVertexID(self):
         return self.id
@@ -54,7 +54,7 @@ class Graph:
         self.numVertices = 0
 
     def __iter__(self):
-        return iter(self.vertDictionary.values())
+        return iter(list(self.vertDictionary.values()))
 
     def addVertex(self, node):
         self.numVertices = self.numVertices + 1
@@ -78,7 +78,7 @@ class Graph:
         self.vertDictionary[to].addNeighbor(self.vertDictionary[frm], cost)
 
     def getVertices(self):
-        return self.vertDictionary.keys()
+        return list(self.vertDictionary.keys())
 
     def setPrevious(self, current):
         self.previous = current
@@ -96,7 +96,7 @@ def shortest(v, path):
 import heapq
 
 def dijkstra(G, source):
-    print '''Dijkstra's shortest path'''
+    print('''Dijkstra's shortest path''')
     # Set the distance for the source node to zero 
     source.setDistance(0)
 
@@ -120,11 +120,11 @@ def dijkstra(G, source):
             if newDist < next.getDistance():
                 next.setDistance(newDist)
                 next.setPrevious(current)
-                print 'Updated : current = %s next = %s newDist = %s' \
-                        % (current.getVertexID(), next.getVertexID(), next.getDistance())
+                print(('Updated : current = %s next = %s newDist = %s' \
+                        % (current.getVertexID(), next.getVertexID(), next.getDistance())))
             else:
-                print 'Not updated : current = %s next = %s newDist = %s' \
-                        % (current.getVertexID(), next.getVertexID(), next.getDistance())
+                print(('Not updated : current = %s next = %s newDist = %s' \
+                        % (current.getVertexID(), next.getVertexID(), next.getDistance())))
 
         # Rebuild heap
         # 1. Pop every item
@@ -156,21 +156,21 @@ if __name__ == '__main__':
     G.addEdge('c', 'd', 4)
     G.addEdge('d', 'e', 4)
 
-    print 'Graph data:'
+    print('Graph data:')
     for v in G:
         for w in v.getConnections():
             vid = v.getVertexID()
             wid = w.getVertexID()
-            print '( %s , %s, %3d)' % (vid, wid, v.getWeight(w))
+            print(('( %s , %s, %3d)' % (vid, wid, v.getWeight(w))))
 	    
     source = G.getVertex('a')
     destination = G.getVertex('e')    
     dijkstra(G, source) 
     
-    for v in G.vertDictionary.values():
-	print source.getVertexID(), " to ", v.getVertexID(), "-->", v.getDistance()
+    for v in list(G.vertDictionary.values()):
+	print((source.getVertexID(), " to ", v.getVertexID(), "-->", v.getDistance()))
 	
     path = [destination.getVertexID()]
     shortest(destination, path)
-    print 'The shortest path from a to e is: %s' % (path[::-1])
-    print allPairsShortestPathLength(G)
+    print(('The shortest path from a to e is: %s' % (path[::-1])))
+    print((allPairsShortestPathLength(G)))

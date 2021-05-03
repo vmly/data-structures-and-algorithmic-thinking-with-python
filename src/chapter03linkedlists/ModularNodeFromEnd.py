@@ -23,7 +23,7 @@ class Node:
         self.next = next
          
     def get_next(self):
-        return self.next
+        return self.__next__
      
      
 class LinkedList:
@@ -41,7 +41,7 @@ class LinkedList:
 				modularNode = currentNode		
 			i = i + 1
 			currentNode = currentNode.get_next()
-		print (modularNode.get_data())
+		print((modularNode.get_data()))
 		
     def modular_node_from_end(self, k):
 		currentNode = self.head
@@ -60,7 +60,7 @@ class LinkedList:
 			modularNode = modularNode.get_next()		
 			currentNode = currentNode.get_next()
 
-		print (modularNode.get_data())
+		print((modularNode.get_data()))
 			
     def insertAtEnd(self, item):
         current = self.head

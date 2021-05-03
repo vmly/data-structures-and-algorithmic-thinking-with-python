@@ -26,4 +26,4 @@ def binarySearchLastOccurrence(A, target):
         return m
 	    
 A = [5, 6, 9, 12, 15, 21, 21, 34, 45, 57, 70, 84]		
-print binarySearchLastOccurrence(A, 21)
+print((binarySearchLastOccurrence(A, 21)))

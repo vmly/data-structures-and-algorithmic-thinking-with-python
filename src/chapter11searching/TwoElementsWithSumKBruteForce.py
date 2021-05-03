@@ -18,4 +18,4 @@ def twoElementsWithSumKBruteForce(A, K):
     
 A = [1, 4, 45, 6, 10, -8]
 A.sort()
-print twoElementsWithSumKBruteForce(A, 111)
+print((twoElementsWithSumKBruteForce(A, 111)))

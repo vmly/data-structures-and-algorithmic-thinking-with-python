@@ -65,7 +65,7 @@ class NodeId:
         self.path = path
 
     def __str__ (self):
-        L = map (str, self.path)
+        L = list(map (str, self.path))
         return string.join (L, "/")
 
     def find (self, node):

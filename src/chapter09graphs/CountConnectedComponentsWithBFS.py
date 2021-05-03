@@ -26,7 +26,7 @@ class Node:
 		self.next = next
 	# method for getting the next field of the node    
 	def get_next(self):
-		return self.next
+		return self.__next__
 	# method for setting the last field of the node
 	def setLast(self, last):
 		self.last = last
@@ -35,7 +35,7 @@ class Node:
 		return self.last	
 	# returns true if the node points to another node
 	def has_next(self):
-		return self.next != None
+		return self.__next__ != None
 
 class Queue(object):
 	def __init__(self, data=None):
@@ -54,19 +54,19 @@ class Queue(object):
 
 	def queueRear(self):
 		if self.rear is None:
-			print "Sorry, the queue is empty!"
+			print("Sorry, the queue is empty!")
 			raise IndexError
 		return self.rear.get_data()
 
 	def queueFront(self):
 		if self.front is None:
-			print "Sorry, the queue is empty!"
+			print("Sorry, the queue is empty!")
 			raise IndexError
 		return self.front.get_data()
 
 	def deQueue(self):
 		if self.rear is None:
-			print "Sorry, the queue is empty!"
+			print("Sorry, the queue is empty!")
 			raise IndexError
 		result = self.rear.get_data()
 		self.rear = self.rear.last
@@ -82,7 +82,7 @@ class Vertex:
         self.id = node
         self.adjacent = {}
         # Set distance to infinity for all nodes
-        self.distance = sys.maxint
+        self.distance = sys.maxsize
         # Mark all nodes unvisited        
         self.visited = False
         # Mark all nodes color with white        
@@ -94,7 +94,7 @@ class Vertex:
         self.adjacent[neighbor] = weight
 
     def getConnections(self):
-        return self.adjacent.keys()  
+        return list(self.adjacent.keys())  
 
     def getVertexID(self):
         return self.id
@@ -129,7 +129,7 @@ class Graph:
         self.numVertices = 0
 
     def __iter__(self):
-        return iter(self.vertDictionary.values())
+        return iter(list(self.vertDictionary.values()))
 
     def addVertex(self, node):
         self.numVertices = self.numVertices + 1
@@ -154,7 +154,7 @@ class Graph:
         self.vertDictionary[to].addNeighbor(self.vertDictionary[frm], cost)
 
     def getVertices(self):
-        return self.vertDictionary.keys()
+        return list(self.vertDictionary.keys())
 
     def setPrevious(self, current):
         self.previous = current
@@ -180,7 +180,7 @@ def bfs(G, s):
 
 	while (vertQueue.size > 0):
 		currentVert = vertQueue.deQueue()
-		print currentVert.getVertexID()
+		print((currentVert.getVertexID()))
 		for nbr in currentVert.getConnections():
 			if (nbr.getColor() == 'white'):
 				nbr.setColor('gray')
@@ -196,7 +196,7 @@ def countConnectedComponentsWithBFS(G):
 		if (v.getColor() == 'white'):
 			count += 1
 			bfs(G, v.getVertexID())
-	print count
+	print(count)
 	
 if __name__ == '__main__':
 
@@ -217,6 +217,6 @@ if __name__ == '__main__':
     G.addEdge('c', 'e', 1)
     G.addEdge('d', 'e', 1)
     G.addEdge('e', 'a', 1)
-    print 'Graph data:'
-    print G.getEdges()    
-    print countConnectedComponentsWithBFS(G)
+    print('Graph data:')
+    print((G.getEdges()))    
+    print((countConnectedComponentsWithBFS(G)))

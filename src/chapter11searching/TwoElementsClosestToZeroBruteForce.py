@@ -11,7 +11,7 @@
 def TwoElementsClosestToZero(A):
 	n = len(A)
 	if(n < 2):
-		print "Invalid Input"
+		print("Invalid Input")
 		return
  	minLeft = 0
 	minRight = 1
@@ -23,7 +23,7 @@ def TwoElementsClosestToZero(A):
 				minSum = sum
 				minLeft = l
 				minRight = r
-	print " The two elements whose sum is minimum are ", A[minLeft], A[minRight]
+	print((" The two elements whose sum is minimum are ", A[minLeft], A[minRight]))
 
 A = [1, 60, -10, 70, -80, 85]
 TwoElementsClosestToZero(A)

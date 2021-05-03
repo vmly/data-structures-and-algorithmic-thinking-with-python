@@ -11,7 +11,7 @@
 def secondSmallestInArray(A):
 	comparisonCount = 0
 	# indexes that are to be compared    
-	idx = range(0, len(A))
+	idx = list(range(0, len(A)))
 
 	# list of knockout for all elements
 	knockout = [[] for i in idx]
@@ -22,7 +22,7 @@ def secondSmallestInArray(A):
 	    # nodes in idx odd, if yes then last automatically goes to next round
 	    odd = len(idx) % 2
 	    # iterate over even indexes, as we do a paired tournament
-	    for i in xrange(0, len(idx) - odd, 2):
+	    for i in range(0, len(idx) - odd, 2):
 		firstIndex = idx[i]
 		secondIndex = idx[i + 1]
 		comparisonCount += 1
@@ -40,19 +40,19 @@ def secondSmallestInArray(A):
 		idx1.append(idx[i + 2])
 	    # perform new tournament
 	    idx = idx1
-	print "Smallest element =", A[idx[0]]
-	print "Total comparisons =", comparisonCount
-	print "Nodes knocked off by the smallest =", knockout[idx[0]], "\n"
+	print(("Smallest element =", A[idx[0]]))
+	print(("Total comparisons =", comparisonCount))
+	print(("Nodes knocked off by the smallest =", knockout[idx[0]], "\n"))
 	# compute second smallest
 	a = knockout[idx[0]]
 	if len(a) > 0:
 	    v = a[0]
-	    for i in xrange(1, len(a)):
+	    for i in range(1, len(a)):
 		comparisonCount += 1
 		if v > a[i]: v = a[i]
 
-	    print "Second smallest element =", v
-	    print "Total comparisons =", comparisonCount
+	    print(("Second smallest element =", v))
+	    print(("Total comparisons =", comparisonCount))
 
 A = [2, 4, 3, 7, 3, 0, 8, 4, 11, 1]	
-print(secondSmallestInArray(A))	
+print((secondSmallestInArray(A)))	

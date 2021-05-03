@@ -17,6 +17,6 @@ def MaxRepititionsEfficient(A):
 		 if(A[i] / n > max): 
 			max = A[i] / n
 			maxIndex = i
-	print maxIndex, "repeated for ", max, " times"
+	print((maxIndex, "repeated for ", max, " times"))
 A = [3, 2, 2, 3, 2, 2, 2, 3, 3]
 MaxRepititionsEfficient(A)

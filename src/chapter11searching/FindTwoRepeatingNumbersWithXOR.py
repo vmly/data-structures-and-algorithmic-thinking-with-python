@@ -27,7 +27,7 @@ def findTwoRepeatingNumbersWithXOR (A):
 		if(i & rightMostSetBitNo):
 			X = X ^ i
 		else:	Y = Y ^ i
- 	print X, Y
+ 	print((X, Y))
 
 A = [4, 2, 4, 5, 2, 3, 1]
 findTwoRepeatingNumbersWithXOR(A)

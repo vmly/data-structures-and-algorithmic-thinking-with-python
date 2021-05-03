@@ -14,7 +14,7 @@ class Vertex:
         self.id = node
         self.adjacent = {}
         # Set distance to infinity for all nodes
-        self.distance = sys.maxint - 10
+        self.distance = sys.maxsize - 10
         # Mark all nodes unvisited        
         self.visited = False  
         # Predecessor
@@ -24,7 +24,7 @@ class Vertex:
         self.adjacent[neighbor] = weight
 
     def getConnections(self):
-        return self.adjacent.keys()  
+        return list(self.adjacent.keys())  
 
     def getVertexID(self):
         return self.id
@@ -53,7 +53,7 @@ class Graph:
         self.numVertices = 0
 
     def __iter__(self):
-        return iter(self.vertDictionary.values())
+        return iter(list(self.vertDictionary.values()))
 
     def addVertex(self, node):
         self.numVertices = self.numVertices + 1
@@ -77,7 +77,7 @@ class Graph:
         self.vertDictionary[to].addNeighbor(self.vertDictionary[frm], cost)
 
     def getVertices(self):
-        return self.vertDictionary.keys()
+        return list(self.vertDictionary.keys())
 
     def setPrevious(self, current):
         self.previous = current
@@ -95,7 +95,7 @@ def shortest(v, path):
 import heapq
 
 def dijkstraModifiedForPrims(G, source):
-    print '''Dijkstra Modified for Prim'''
+    print('''Dijkstra Modified for Prim''')
     # Set the distance for the source node to zero 
     source.setDistance(0)
 
@@ -118,11 +118,11 @@ def dijkstraModifiedForPrims(G, source):
             if newCost < next.getDistance():
                 next.setDistance(current.getWeight(next))
                 next.setPrevious(current)
-                print 'Updated : current = %s next = %s newCost = %s' \
-                        % (current.getVertexID(), next.getVertexID(), next.getDistance())
+                print(('Updated : current = %s next = %s newCost = %s' \
+                        % (current.getVertexID(), next.getVertexID(), next.getDistance())))
             else:
-                print 'Not updated : current = %s next = %s newCost = %s' \
-                        % (current.getVertexID(), next.getVertexID(), next.getDistance())
+                print(('Not updated : current = %s next = %s newCost = %s' \
+                        % (current.getVertexID(), next.getVertexID(), next.getDistance())))
 
         # Rebuild heap
         # 1. Pop every item
@@ -152,18 +152,18 @@ if __name__ == '__main__':
     G.addEdge("E", "G", 9)
     G.addEdge("F", "G", 11)
     
-    print 'Graph data:'
+    print('Graph data:')
     for v in G:
         for w in v.getConnections():
             vid = v.getVertexID()
             wid = w.getVertexID()
-            print '( %s , %s, %3d)' % (vid, wid, v.getWeight(w))
+            print(('( %s , %s, %3d)' % (vid, wid, v.getWeight(w))))
 	    
     source = G.getVertex('A')
     dijkstraModifiedForPrims(G, source) 
     
-    for v in G.vertDictionary.values():
+    for v in list(G.vertDictionary.values()):
 	if v.previous:
-		print v.getVertexID(), " to ", v.previous.getVertexID(), "-->", v.getDistance()
+		print((v.getVertexID(), " to ", v.previous.getVertexID(), "-->", v.getDistance()))
 	else:
-		print v.getVertexID(), " to None -->", v.getDistance()
+		print((v.getVertexID(), " to None -->", v.getDistance()))

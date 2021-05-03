@@ -30,10 +30,10 @@ class Node:
 		return self.rand	
 	# method for getting the next field of the node    
 	def get_next(self):
-		return self.next
+		return self.__next__
 	# returns true if the node points to another node
 	def has_next(self):
-	    return self.next != None
+	    return self.__next__ != None
 	    
 	def clone_linked_list(old):
 	    if not old:

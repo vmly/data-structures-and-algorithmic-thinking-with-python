@@ -1,12 +1,12 @@
 # Copyright (c) Dec 22, 2014 CareerMonk Publications and others.
-# E-Mail           		: info@careermonk.com 
-# Creation Date    		: 2014-01-10 06:15:46 
-# Last modification		: 2008-10-31 
-#               by		: Narasimha Karumanchi 
+# E-Mail           		: info@careermonk.com
+# Creation Date    		: 2014-01-10 06:15:46
+# Last modification		: 2008-10-31
+#               by		: Narasimha Karumanchi
 # Book Title			: Data Structures And Algorithms Made In Java
-# Warranty         		: This software is provided "as is" without any 
-# 				   warranty; without even the implied warranty of 
-# 				    merchantability or fitness for a particular purpose. 
+# Warranty         		: This software is provided "as is" without any
+# 				   warranty; without even the implied warranty of
+# 				    merchantability or fitness for a particular purpose.
 
 # Splits in place a list in two halves, the first half is >= in size than the second.
 # @return A tuple containing the heads of the two halves
@@ -16,26 +16,32 @@ class Node:
     def __init__(self):
         self.data = None
         self.next = None
-         # method for setting the data field of the node    
+        # method for setting the data field of the node
+
     def set_data(self, data):
         self.data = data
-    # method for getting the data field of the node   
+
+    # method for getting the data field of the node
     def get_data(self):
         return self.data
-      # method for setting the next field of the node
+
+    # method for setting the next field of the node
     def set_next(self, next):
         self.next = next
-       # method for getting the next field of the node    
+
+    # method for getting the next field of the node
     def get_next(self):
-        return self.next
+        return self.__next__
+
     # returns true if the node points to another node
     def has_next(self):
-            return self.next != None
-	    
+        return self.__next__ != None
+
+
 def _splitList(head):
     fast = head
     slow = head
-    while fast and fast.next:
+    while fast and fast.__next__:
         slow = slow.get_next()
         fast = fast.get_next()
         fast = fast.get_next()
@@ -45,20 +51,22 @@ def _splitList(head):
 
     return head, middle
 
+
 # Reverses in place a list.
 # @return Returns the head of the new reversed list
 def _reverseList(head):
 
-  last = None
-  currentNode = head
+    last = None
+    currentNode = head
 
-  while currentNode:
-    nextNode = currentNode.get_next()
-    currentNode.set_next(last)
-    last = currentNode
-    currentNode = nextNode
+    while currentNode:
+        nextNode = currentNode.get_next()
+        currentNode.set_next(last)
+        last = currentNode
+        currentNode = nextNode
 
-  return last
+    return last
+
 
 # Merges in place two lists
 def _mergeLists(a, b):
@@ -73,11 +81,12 @@ def _mergeLists(a, b):
             a, b = b, a
     return head
 
+
 class Solution:
     # @param head, a ListNode
     # @return nothing
     def reorderList(self, head):
-        if not head or not head.next:
+        if not head or not head.__next__:
             return
         a, b = _splitList(head)
         b = _reverseList(b)

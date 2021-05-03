@@ -26,7 +26,7 @@ class Node:
 		self.next = next
 	# method for getting the next field of the node    
 	def get_next(self):
-		return self.next
+		return self.__next__
 	# method for setting the last field of the node
 	def setLast(self, last):
 		self.last = last
@@ -35,7 +35,7 @@ class Node:
 		return self.last	
 	# returns true if the node points to another node
 	def has_next(self):
-		return self.next != None
+		return self.__next__ != None
 
 
 class Queue(object):
@@ -55,19 +55,19 @@ class Queue(object):
 
 	def queueRear(self):
 		if self.rear is None:
-			print "Sorry, the queue is empty!"
+			print("Sorry, the queue is empty!")
 			raise IndexError
 		return self.rear.get_data()
 
 	def queueFront(self):
 		if self.front is None:
-			print "Sorry, the queue is empty!"
+			print("Sorry, the queue is empty!")
 			raise IndexError
 		return self.front.get_data()
 
 	def deQueue(self):
 		if self.rear is None:
-			print "Sorry, the queue is empty!"
+			print("Sorry, the queue is empty!")
 			raise IndexError
 		result = self.rear.get_data()
 		self.rear = self.rear.last
@@ -93,7 +93,7 @@ class Vertex:
         self.adjacent[neighbor] = weight
 
     def getConnections(self):
-        return self.adjacent.keys()  
+        return list(self.adjacent.keys())  
 
     def getVertexID(self):
         return self.id
@@ -122,7 +122,7 @@ class Graph:
         self.numVertices = 0
 
     def __iter__(self):
-        return iter(self.vertDictionary.values())
+        return iter(list(self.vertDictionary.values()))
 
     def addVertex(self, node):
         self.numVertices = self.numVertices + 1
@@ -147,7 +147,7 @@ class Graph:
         self.vertDictionary[to].addNeighbor(self.vertDictionary[frm], cost)
 
     def getVertices(self):
-        return self.vertDictionary.keys()
+        return list(self.vertDictionary.keys())
 
     def setPrevious(self, current):
         self.previous = current
@@ -177,8 +177,8 @@ def UnweightedShortestPath(G, s):
 				nbr.setDistance(currentVert.getDistance() + 1)
 				nbr.setPrevious(currentVert)
 				vertQueue.enQueue(nbr)
-	for v in G.vertDictionary.values():
-		print source.getVertexID(), " to ", v.getVertexID(), "-->", v.getDistance()
+	for v in list(G.vertDictionary.values()):
+		print((source.getVertexID(), " to ", v.getVertexID(), "-->", v.getDistance()))
 
 if __name__ == '__main__':
     G = Graph()
@@ -202,6 +202,6 @@ if __name__ == '__main__':
     G.addEdge('F', 'H')       
     G.addEdge('E', 'H')    
     G.addEdge('H', 'I')      
-    print 'Graph data:'
-    print G.getEdges()	    
+    print('Graph data:')
+    print((G.getEdges()))	    
     UnweightedShortestPath(G, 'A')
