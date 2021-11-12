@@ -45,3 +45,81 @@ def maxsum_path(root):
     i = max(path2sum, key=path2sum.get)
     print(("The path going through node", i, "with max sum", path2sum[i]))
     return path2sum[i]
+
+class BinaryTree:
+    def __init__(self, data):
+        self.data = data  # root node
+        self.left = None  # left child
+        self.right = None  # right child
+
+    # set data
+    def set_data(self, data):
+        self.data = data
+
+    # get data
+    def get_data(self):
+        return self.data
+
+    # get left child of a node
+    def getLeft(self):
+        return self.left
+
+    # get right child of a node
+    def getRight(self):
+        return self.right
+
+    # get left child of a node
+    def setLeft(self, left):
+        self.left = left
+
+    # get right child of a node
+    def setRight(self, right):
+        self.right = right
+
+    def insertLeft(self, newNode):
+        if self.left == None:
+            self.left = BinaryTree(newNode)
+        else:
+            temp = BinaryTree(newNode)
+            temp.left = self.left
+            self.left = temp
+
+    def insertRight(self, newNode):
+        if self.right == None:
+            self.right = BinaryTree(newNode)
+        else:
+            temp = BinaryTree(newNode)
+            temp.right = self.right
+            self.right = temp
+
+def solution2(root):
+    global max_path
+    max_path = float("-inf")
+
+    def helper(node):
+        if node is None:
+            return 0
+        gain_left = max(0, helper(node.left))
+        gain_right = max(0, helper(node.right))
+
+        global max_path
+        max_path = max(max_path, node.data + gain_left + gain_right)
+
+        return node.data + max(gain_left, gain_right)
+
+    helper(root)
+
+    return max_path
+
+if __name__ == "__main__":
+
+    btree = BinaryTree(1)
+    btree.left = BinaryTree(2)
+    btree.right = BinaryTree(3)
+    btree.left.left = BinaryTree(4)
+    btree.left.right = BinaryTree(5)
+    btree.right.left = BinaryTree(6)
+    btree.right.right = BinaryTree(7)
+    # treeMaximumSumPath(btree)
+
+    print(solution2(btree))

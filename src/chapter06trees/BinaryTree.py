@@ -9,6 +9,7 @@
 #                                   merchantability or fitness for a particular purpose.
 
 """Binary Tree Class and its methods"""
+# | 135  | 6.6 Binary Tree Traversals | src\chapter06trees\BinaryTree.py |
 
 
 class BinaryTree:
@@ -95,12 +96,16 @@ def preorderIterative(root, result):
 
     stack = []
     stack.append(root)
+    # print("stack - ", root.data, print_stack(stack))
     while stack:
         node = stack.pop()
+        # print("pop - ", node.data, print_stack(stack))
         result.append(node.data)
         if node.right:
+            # print("push right - ", node.right.data, print_stack(stack))
             stack.append(node.right)
         if node.left:
+            # print("push left - ", node.left.data, print_stack(stack))
             stack.append(node.left)
 
 
@@ -114,9 +119,11 @@ def inorderIterative(root, result):
     while stack or node:
         if node:
             stack.append(node)
+            # print("push - ", node.data, print_stack(stack))
             node = node.left
         else:
             node = stack.pop()
+            print("pop - ", node.data, print_stack(stack))
             result.append(node.data)
             node = node.right
 
@@ -144,32 +151,71 @@ def postorderIterative(root, result):
                 node = None
 
 
+import queue
+
+
 def levelOrder(root, result):
     if root is None:
         return
 
-    q = Queue.Queue()
-    q.put(self.root)
+    q = queue.Queue()
+    q.put(root)
     n = None
 
     while not q.empty():
         n = q.get()  # dequeue FIFO
-        result.append(node.get_data())
+        print("get - ", n.data)
+        result.append(n.data)
         if n.left is not None:
             q.put(n.left)
+            print("put - ", n.left.data)
 
         if n.right is not None:
             q.put(n.right)
+            print("put - ", n.right.data)
 
 
-root = BinaryTree(11)
-print((root.get_data()))
+def print_stack(stack):
+    return list(node.data for node in stack)
 
-root.insertLeft(1)
-root.insertLeft(10)
-root.insertLeft(1100)
-print((root.getLeft().get_data()))
-root.insertRight(5)
-print((root.getRight().get_data()))
-root.getRight().set_data(2)
-print((root.getRight().get_data()))
+
+# root = BinaryTree(11)
+# print((root.get_data()))
+
+# root.insertLeft(1)
+# root.insertLeft(10)
+# root.insertLeft(1100)
+# print((root.getLeft().get_data()))
+# root.insertRight(5)
+# print((root.getRight().get_data()))
+# root.getRight().set_data(2)
+# print((root.getRight().get_data()))
+
+if __name__ == "__main__":
+    btree = BinaryTree(1)
+    btree.left = BinaryTree(2)
+    btree.right = BinaryTree(3)
+    btree.left.left = BinaryTree(4)
+    btree.left.right = BinaryTree(5)
+    btree.right.left = BinaryTree(6)
+    btree.right.right = BinaryTree(7)
+
+    pre, inorder, post = [], [], []
+
+    # preorderRecursive(btree, pre)
+    # inorderRecursive(btree, inorder)
+    # postorderRecursive(btree, post)
+
+    # print(pre, inorder, post)
+
+    pre, inorder, post = [], [], []
+
+    # preorderIterative(btree, pre)
+    # print(pre)
+
+    # inorderIterative(btree, inorder)
+    # print(inorder)
+
+    levelorder = []
+    levelOrder(btree, levelorder)
+    print(levelorder)

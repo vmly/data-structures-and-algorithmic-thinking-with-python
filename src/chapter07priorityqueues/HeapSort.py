@@ -12,10 +12,10 @@
 def heapSort(A):
     # convert A to heap
     length = len(A) - 1
-    leastParent = length / 2
+    leastParent = length // 2
     for i in range(leastParent, -1, -1):
         percolateDown(A, i, length)
-
+    print(" ---- ")
     # flatten heap into sorted array
     for i in range(length, 0, -1):
         if A[0] > A[i]:
@@ -25,6 +25,7 @@ def heapSort(A):
 
 # Modfied percolateDown to skip the sorted elements
 def percolateDown(A, first, last):
+    print("percolateDown - ", first, last, A)
     largest = 2 * first + 1
     while largest <= last:
         # right child exists and is larger than left child
@@ -42,6 +43,7 @@ def percolateDown(A, first, last):
 
 
 def swap(A, x, y):
+    print("swap - ", x, y, " -- ", A[x], A[y])
     temp = A[x]
     A[x] = A[y]
     A[y] = temp
@@ -50,3 +52,5 @@ def swap(A, x, y):
 A = [534, 246, 933, 127, 277, 321, 454, 565, 220]
 print((heapSort(A)))
 print(A)
+
+

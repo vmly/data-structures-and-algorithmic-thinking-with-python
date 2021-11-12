@@ -22,11 +22,13 @@ def kthSmallest(collection, k):
 
 def buildHeap(A):
     n = len(A)
-    for i in range(n / 2 - 1, -1, -1):
+    for i in range(n // 2 - 1, -1, -1):
+        print(f"heapify(A, {i}, n)", A)
         heapify(A, i, n)
 
 
 def heapify(A, index, maxIndex):
+    print(index, maxIndex)
     """Ensure structure rooted at A[index] is a heap"""
     left = 2 * index + 1
     right = 2 * index + 2
@@ -42,6 +44,6 @@ def heapify(A, index, maxIndex):
         heapify(A, largest, maxIndex)
 
 
-print((kthSmallest(list(range(10)), 3)))
-print((kthSmallest(list(range(10)), 1)))
-print((kthSmallest(list(range(10)), 10)))
+print((kthSmallest(list(range(12,16)) + list(range(10)), 6)))
+# print((kthSmallest(list(range(10)), 1)))
+# print((kthSmallest(list(range(10)), 10)))

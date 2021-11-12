@@ -114,7 +114,7 @@ def postorderTraversal(root, result):
             if node.left != None:
                 stack.append(node.left)
 
-
+from queue import Queue
 def levelOrder(root):
     Q = Queue()
     if root == None:
@@ -128,3 +128,16 @@ def levelOrder(root):
             Q.enQueue(temp.left)
         if temp.right:
             Q.enQueue(temp.right)
+
+if __name__ == "__main__":
+    btree = BinaryTree(1)
+    btree.left = BinaryTree(2)
+    btree.right = BinaryTree(3)
+
+    pre, inorder, post = [], [], []
+
+    preorderRecursive(btree, pre)
+    inorderRecursive(btree, inorder)
+    postorderRecursive(btree, post)
+
+    print(pre, inorder, post)
